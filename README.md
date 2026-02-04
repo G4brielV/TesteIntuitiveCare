@@ -44,9 +44,11 @@ cd web/frontend
 npm install
 ```
 
+# OBS: Escolhi por não subir todos os csvs e ZIPs por conta do armazenamento e limites do github, mas os códigos capturam da API corretamente e geram os asquivos necessários
+
 # Principais pontos de cada etapa:
 ## 1. TESTE DE INTEGRAÇÃO COM API PÚBLICA - 
-- **OBJETIVO:** Identifica e baixa os ZIP -> Extrai -> Consolida os 3 ultimos csvs 
+- **OBJETIVO:** Identifica e baixa os ZIP -> Extrai -> Consolida os 3 ultimos csvs -> Gera consolidado_despesas.zip
 - **Processamento incremental:** Processamento dos CSVs em partes (chunks) para economizar memória. Caso a ocorrência desejada seja encontrada nos primeiros blocos, o processamento é interrompido.
 - **Consolidação:**
   - **OBS:** Como nas demonstrações contábeis não tinha o CNPJ eu fiz um merge com o operadoras_de_plano_de_saude_ativas que tinha a chave para conseguir o merge e trazia o CNPJ
@@ -59,7 +61,7 @@ npm install
         ```
 
 ## 2. TESTE DE TRANSFORMAÇÃO E VALIDAÇÃO DE DADOS - 
-- **OBJETIVO:** Valida os dados -> enrique-se com o merge -> agrupa e trás outras análises para os dados
+- **OBJETIVO:** Valida os dados -> enrique-se com o merge -> agrupa e trás outras análises para os dados -> gera despesas_agregadas.csv e Teste_Gabriel.zip
 - **CNPJ inválido:** Separados em um DataFrame à parte para evitar perda de dados e facilitar a análise.
 - **Valores negativos:** Não existem mais (Tratados na etapa anterior) 
 - **Razão social vazia:** Excluído
