@@ -8,7 +8,7 @@ from app.schemas.estatisticas import EstatisticasResponse
 router = APIRouter()
 
 # Estatísticas (Usando a tabela de resumo para performance)
-@router.get("/estatisticas")
+@router.get("")
 def get_estatisticas(db: Session = Depends(get_db)):
     stats = db.query(
         func.sum(DespesaAgregadaResumo.total_despesas).label("total"),
